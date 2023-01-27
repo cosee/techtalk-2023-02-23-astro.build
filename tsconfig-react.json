@@ -1,0 +1,10 @@
+{
+  "include": ["src/components/HelloReact.tsx"],
+  "extends": "astro/tsconfigs/base",
+  "compilerOptions": {
+    "jsx": "react-jsx",
+    "jsxImportSource": "react",
+    "composite": true
+  },
+
+}

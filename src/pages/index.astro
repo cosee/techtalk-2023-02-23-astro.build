@@ -1,37 +1,30 @@
 ---
-import Layout from '../layouts/Layout.astro';
-import Card from '../components/Card.astro';
+import Layout from "../layouts/Layout.astro";
+import Card from "../components/Card.astro";
+import { HelloReact } from "../components/HelloReact";
+import { HelloSolid } from "../components/HelloSolid";
+
+const posts = await Astro.glob("./blog/**/*.md");
 ---
 
 <Layout title="Welcome to Astro.">
 	<main>
-		<h1>Welcome to <span class="text-gradient">Astro</span></h1>
-		<p class="instructions">
-			To get started, open the directory <code>src/pages</code> in your project.<br />
-			<strong>Code Challenge:</strong> Tweak the "Welcome to Astro" message above.
-		</p>
+		<!-- <HelloReact client:idle /> -->
+		<HelloSolid client:idle />
 		<ul role="list" class="link-card-grid">
-			<Card
-				href="https://docs.astro.build/"
-				title="Documentation"
-				body="Learn how Astro works and explore the official API docs."
-			/>
-			<Card
-				href="https://astro.build/integrations/"
-				title="Integrations"
-				body="Supercharge your project with new frameworks and libraries."
-			/>
-			<Card
-				href="https://astro.build/themes/"
-				title="Themes"
-				body="Explore a galaxy of community-built starter themes."
-			/>
-			<Card
-				href="https://astro.build/chat/"
-				title="Community"
-				body="Come say hi to our amazing Discord community. ❤️"
-			/>
+			{
+				posts.map((post) => {
+					return (
+						<Card
+							href={post.url}
+							title={post.frontmatter.title}
+							body={post.frontmatter.abstract}
+						/>
+					);
+				})
+			}
 		</ul>
+		<pre>{JSON.stringify(posts, null,2)}</pre>
 	</main>
 </Layout>
 

@@ -1,14 +1,9 @@
+import { useStore } from "@nanostores/solid";
 import { Component, createEffect, createSignal, onCleanup } from "solid-js";
+import { counterAtom } from "./store";
 
 export const HelloSolid: Component = () => {
-    const [hello, setHello] = createSignal("Hello Solid")
-
-    createEffect(() => {
-        const interval = setInterval(() => {
-            setHello(hello() + "-> ")
-        },1000)
-        onCleanup(() => clearInterval(interval))
-    })
-
-    return <h1>{hello()}</h1>
+    const counter = useStore(counterAtom)
+ 
+    return <span>{counter()}</span>
 }

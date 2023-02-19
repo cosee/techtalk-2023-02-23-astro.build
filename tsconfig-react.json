@@ -1,10 +1,13 @@
 {
-  "include": ["src/components/HelloReact.tsx"],
+  "include": ["src/components/HelloReact.tsx", "src/components/store.ts"],
   "extends": "astro/tsconfigs/base",
   "compilerOptions": {
     "jsx": "react-jsx",
     "jsxImportSource": "react",
-    "composite": true
+    "composite": true,
+    "noEmit": false,
+    "emitDeclarationOnly": true,
+    "outDir": "dist-react"
   },
 
 }

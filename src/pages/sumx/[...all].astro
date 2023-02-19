@@ -1,0 +1,23 @@
+---
+/*
+export async function getStaticPaths() {
+    const result = [];
+    for (let a = 1; a <= 10; a++) {
+        for (let b = 1; b <= 10; b++) {
+            console.log("static path", a,b)
+            result.push({ params: { a, b } });
+        }
+    }
+    return result;
+}
+*/
+
+const { all } = Astro.params;
+
+const summands = all.trim().split("/").map(x => parseInt(x))
+
+// Don't ever use reduce... ;-) https://www.youtube.com/watch?v=qaGjS7-qWzg
+const sum = summands.reduce((a,b) => a+b, 0)
+---
+
+<div>{summands.join(" + ")} = {sum}</div>

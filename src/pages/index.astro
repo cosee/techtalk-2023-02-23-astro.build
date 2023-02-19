@@ -9,8 +9,15 @@ const posts = await Astro.glob("./blog/**/*.md");
 
 <Layout title="Welcome to Astro.">
 	<main>
-		<!-- <HelloReact client:idle /> -->
-		<HelloSolid client:idle />
+		<div style="border: 1px solid black; padding: 1rem;">
+			React: <HelloReact client:idle />
+		</div>
+		<div style="border: 1px solid black; padding: 1rem; margin-top: 1rem;">
+			Solid: <HelloSolid client:idle />
+		</div>
+
+		
+
 		<ul role="list" class="link-card-grid">
 			{
 				posts.map((post) => {

@@ -1,7 +1,4 @@
 ---
-/*
-// In SSG mode, we need getStaticPath to determine which pages should be generated
-
 export async function getStaticPaths() {
     const result = [];
     for (let a = 1; a <= 10; a++) {
@@ -12,7 +9,7 @@ export async function getStaticPaths() {
     }
     return result;
 }
-*/
+
 
 const { a, b } = Astro.params;
 ---

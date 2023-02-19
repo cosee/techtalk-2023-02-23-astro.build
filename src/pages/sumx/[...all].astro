@@ -1,16 +1,15 @@
 ---
-/*
+
 export async function getStaticPaths() {
     const result = [];
     for (let a = 1; a <= 10; a++) {
         for (let b = 1; b <= 10; b++) {
-            console.log("static path", a,b)
-            result.push({ params: { a, b } });
+            result.push({ params: { all: a + "/" + b } });
         }
     }
     return result;
 }
-*/
+
 
 const { all } = Astro.params;
 

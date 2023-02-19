@@ -1,4 +1,5 @@
 import { defineConfig } from 'astro/config';
+import node from '@astrojs/node';
 
 // https://astro.build/config
 import react from "@astrojs/react";
@@ -10,7 +11,10 @@ import solidJs from "@astrojs/solid-js";
 export default defineConfig({
   integrations: [react(), solidJs()],
   // Run in a server
-  output: "server"
+  output: "server",
+  adapter: node({
+    mode: 'standalone'
+  }),
   // Generate static pages
   // output: "static"
 });
